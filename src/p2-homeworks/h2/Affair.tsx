@@ -1,5 +1,6 @@
 import React from 'react'
 import {AffairType} from "./HW2";
+import styles from './Affairs.module.css'
 
 type AffairPropsType = {
 
@@ -12,11 +13,14 @@ function Affair(props: AffairPropsType) {
         props.deleteAffairCallback(props.affair._id)
     }
 
-    return (
-        <div>
-            <span>{props.affair.name}</span>
+    const priority = props.affair.priority
 
-            <button onClick={deleteCallback}>X</button>
+    return (
+        <div className={styles.item}>
+            <div className={styles.itemName}>{props.affair.name}</div>
+            <div className={styles.itemPriority}
+                 style={{background: priority === 'middle' ? 'green' : priority === 'high' ? 'red' : 'blue'}}>{props.affair.priority}</div>
+            <button className={styles.btnRed} onClick={deleteCallback}>X</button>
         </div>
     )
 }

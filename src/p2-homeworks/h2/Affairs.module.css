@@ -1,3 +1,43 @@
-.someClass {
+.wrapper {
+    margin: 20px;
+    width: 15%;
+}
 
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 5px;
+}
+
+.itemName {
+
+}
+
+.itemPriority {
+    align-self: center;
+    margin-left: auto;
+    margin-right: 20px;
+    opacity: 0.6;
+    color: white;
+}
+
+.btnGreen {
+    background-color: green;
+    padding: 10px;
+    border: none;
+    margin-right: 5px;
+    margin-top: 10px;
+    border-radius: 6px;
+    color: white;
+}
+
+.btnRed {
+    background-color: red;
+    padding: 5px;
+    border: none;
+    margin-left: 5px;
+    color: white;
+    border-radius: 6px;
 }
