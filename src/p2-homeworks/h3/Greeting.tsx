@@ -1,26 +1,35 @@
-import React from 'react'
-import s from './Greeting.module.css'
+import React, {ChangeEvent, KeyboardEvent} from 'react'
+import styles from './Greeting.module.css'
 
 type GreetingPropsType = {
-    name: any // need to fix any
-    setNameCallback: any // need to fix any
-    addUser: any // need to fix any
-    error: any // need to fix any
-    totalUsers: any // need to fix any
+    name: string // need to fix any
+    setNameCallback: (e: ChangeEvent<HTMLInputElement>) => void // need to fix any
+    addUser: () => void // need to fix any
+    error: string // need to fix any
+    totalUsers: number// need to fix any
+    onKeyPressHandler: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
-    {name, setNameCallback, addUser, error, totalUsers} // деструктуризация пропсов
+    {name, setNameCallback, addUser, error, totalUsers, onKeyPressHandler} // деструктуризация пропсов
 ) => {
-    const inputClass = s.error // need to fix with (?:)
+
+    const isError = error.length > 0
+    const inputClass = error.length ? styles.errorInput : ''  // need to fix with (?:)
 
     return (
-        <div>
-            <input value={name} onChange={setNameCallback} className={inputClass}/>
-            <span>{error}</span>
-            <button onClick={addUser}>add</button>
-            <span>{totalUsers}</span>
+        <div className={styles.wrapper}>
+            <input
+                value={name}
+                onChange={setNameCallback}
+                onKeyPress={onKeyPressHandler}
+                className={inputClass}
+                autoFocus={true}
+            />
+            <span className={styles.error}>{error ? error : ''}</span>
+            <button onClick={addUser} disabled={isError} className={styles.btn}>add</button>
+            <span className={styles.counter}>{totalUsers}</span>
         </div>
     )
 }

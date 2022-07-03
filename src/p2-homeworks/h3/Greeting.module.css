@@ -1,7 +1,65 @@
-.someClass {
+.wrapper {
+    margin: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+
+input {
+    outline: none;
+    width: 300px;
+    font-size: 18px;
+    color: black;
+    border: 2px solid goldenrod;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.errorInput {
+    border: 2px solid red;
+}
+
+input:focus {
+    transform: scale(1.01);
 }
 
 .error {
-    border: 1px solid red;
+    position: absolute;
+    left: 10px;
+    bottom: -20px;
+    color: red;
+    font-size: 15px;
+}
+
+.btn {
+    background-color: black;
+    padding: 10px;
+    border: none;
+    margin-right: 8px;
+    border-radius: 6px;
+    color: white;
+    transition: background-color 0.4s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.01);
+}
+
+.btn:disabled,
+.btn[disabled] {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    transform: none;
+    cursor: initial;
+}
+
+
+
+.counter {
+    font-size: 25px;
+    color: black;
 }
