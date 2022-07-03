@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {MouseEvent} from 'react'
 import Affair from './Affair'
 import {AffairType, FilterType} from './HW2'
 import styles from './Affairs.module.css'
+import cn from 'classnames'
 
 type AffairsPropsType = { // need to fix any
     data: AffairType[]
     setFilter: (value: FilterType) => void
     deleteAffairCallback: (_id: number) => void
+    filter: FilterType
 }
+
+const btnTitles: string[] = ['All', 'High', 'Middle', 'Low']
 
 function Affairs(props: AffairsPropsType) {
     const mappedAffairs = props.data.map((a: AffairType) => (
@@ -18,28 +22,19 @@ function Affairs(props: AffairsPropsType) {
         />
     ))
 
-    const setAll = () => {
-        props.setFilter('all')
-    }
-    const setHigh = () => {
-        props.setFilter('high')
-    }
-    const setMiddle = () => {
-        props.setFilter('middle')
-    }
-    const setLow = () => {
-        props.setFilter('low')
+    const onSetFilter = (e: MouseEvent<HTMLButtonElement>) => {
+        props.setFilter(e.currentTarget.value as FilterType)
     }
 
     return (
         <div className={styles.wrapper}>
-
-            {mappedAffairs}
-
-            <button onClick={setAll} className={styles.btnGreen}>All</button>
-            <button onClick={setHigh} className={styles.btnGreen}>High</button>
-            <button onClick={setMiddle} className={styles.btnGreen}>Middle</button>
-            <button onClick={setLow} className={styles.btnGreen}>Low</button>
+            {btnTitles.map(title => (
+                <button className={cn(styles.btnGreen, {
+                    [styles.btnActive]: title.toLowerCase() === props.filter
+                })} onClick={onSetFilter} key={title} value={title.toLowerCase()}>{title}</button>)
+            )
+            }
+            {mappedAffairs.length ? mappedAffairs : <h2>Тасок нет</h2>}
         </div>
     )
 }

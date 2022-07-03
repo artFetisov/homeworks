@@ -31,6 +31,11 @@
     margin-top: 10px;
     border-radius: 6px;
     color: white;
+    margin-bottom: 10px;
+}
+
+.btnActive {
+    background-color: darkblue;
 }
 
 .btnRed {
