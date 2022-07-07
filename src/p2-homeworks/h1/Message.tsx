@@ -11,7 +11,7 @@ interface IMessageProps {
 const Message: FC<IMessageProps> = ({avatar, name, message, time}) => {
     return (
         <div className={styles.message}>
-            <img src={avatar} className={styles.avatar}/>
+            <img src={avatar} className={styles.avatar} alt='Аватар'/>
             <div className={styles.info}>
                 <div className={styles.name}>{name}</div>
                 <span className={styles.textMessage}>{message}</span>
