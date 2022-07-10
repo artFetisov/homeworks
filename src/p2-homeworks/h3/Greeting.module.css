@@ -6,7 +6,7 @@
 }
 
 
-input {
+.input {
     outline: none;
     width: 300px;
     font-size: 18px;
@@ -22,7 +22,7 @@ input {
     border: 2px solid red;
 }
 
-input:focus {
+.input:focus {
     transform: scale(1.01);
 }
 

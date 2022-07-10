@@ -1,12 +1,25 @@
 .superInput {
+    outline: none;
+    border: none;
+    width: 25%;
+    font-size: 18px;
+    color: darkgrey;
+    border-bottom: 2px solid black;
+    padding: 5px 10px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    margin: 10px;
+}
 
+.superInput:focus {
+    transform: scale(1.01);
 }
 
 .errorInput {
-    border: 3px solid lime;
-    background: red;
+    border-bottom: 2px solid red;
+    color: red;
 }
 
 .error {
+    position: absolute;
     color: red;
 }

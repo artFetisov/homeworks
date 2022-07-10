@@ -16,7 +16,7 @@ const Greeting = forwardRef<HTMLInputElement, GreetingPropsType>((
 ) => {
 
     const isError = error.length > 0
-    const inputClass = error.length ? styles.errorInput : ''  // need to fix with (?:)
+    const inputClass = `${styles.input} ${isError ? styles.errorInput : ''}`  // need to fix with (?:)
 
 
     return (

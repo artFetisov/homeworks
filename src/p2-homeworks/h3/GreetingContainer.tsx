@@ -1,4 +1,4 @@
-import React, {ChangeEvent, createRef, KeyboardEvent,  useState} from 'react'
+import React, {ChangeEvent, createRef, KeyboardEvent, useState} from 'react'
 import Greeting from './Greeting'
 import {UserType} from "./HW3";
 
@@ -19,7 +19,6 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
     const inpRef = createRef<HTMLInputElement>()
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
-        console.log('change')
         const trimedName = e.currentTarget.value.trim()
 
         if (trimedName) {
@@ -43,9 +42,12 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
     }
 
     const addUser = () => {
-        addUserCallback(name.trim())
-        alert(`Hello  ${name.trim()}!`) // need to fix
-        setName('')
+        if (name) {
+            addUserCallback(name.trim())
+            alert(`Hello  ${name.trim()}!`) // need to fix
+            setName('')
+        } else setError('Name is required')
+
 
     }
 
