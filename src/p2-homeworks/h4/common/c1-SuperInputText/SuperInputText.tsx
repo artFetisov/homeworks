@@ -11,6 +11,7 @@ type SuperInputTextPropsType = DefaultInputPropsType & { // и + ещё проп
     onEnter?: () => void
     error?: string
     spanClassName?: string
+    sizeInp?: string
 }
 
 const SuperInputText: React.FC<SuperInputTextPropsType> = (
@@ -20,6 +21,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
         onKeyPress, onEnter,
         error,
         className, spanClassName,
+        sizeInp,
 
         ...restProps// все остальные пропсы попадут в объект restProps
     }
@@ -39,7 +41,10 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
     }
 
     const finalSpanClassName = `${styles.error} ${spanClassName ? spanClassName : ''}`
-    const finalInputClassName = `${styles.superInput} ${className ? className : ''} ${error && styles.errorInput}` // need to fix with (?:) and s.superInput
+    const finalInputClassName = `${styles.superInput} 
+    ${sizeInp === 'small' && styles.small} 
+    ${className ? className : ''} 
+    ${error && styles.errorInput}` // need to fix with (?:) and s.superInput
 
     return (
         <>
