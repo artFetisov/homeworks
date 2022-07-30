@@ -48,7 +48,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         onDoubleClick && onDoubleClick(e)
     }
 
-    const spanClassName = `${'сделать красивый стиль для спана'} ${className}`
+    const spanClassName = `${styles.span} ${className}`
 
     return (
         <>
@@ -63,17 +63,15 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                         {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                     />
                 ) : (
-                    <>
-                        <img className={styles.pencil} src={logoPencil}/>
+                    <div onDoubleClick={onDoubleClickCallBack}>
+                        <img className={styles.pencil} src={logoPencil} alt={'pencil'}/>
                         <span
-                            onDoubleClick={onDoubleClickCallBack}
                             className={spanClassName}
-
                             {...restSpanProps}
                         >
                         {/*если нет захардкодженного текста для спана, то значение инпута*/}
                             {children || restProps.value}
-                    </span></>
+                    </span></div>
 
                 )
             }

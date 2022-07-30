@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react'
+import React, {useState} from 'react'
 import SuperEditableSpan from './common/c4-SuperEditableSpan/SuperEditableSpan'
 import SuperButton from '../h4/common/c2-SuperButton/SuperButton'
 import {restoreState, saveState} from './localStorage/localStorage'
@@ -12,8 +12,7 @@ function HW6() {
         saveState<string>(EDITABLE_SPAN_VALUE, value)
     }
     const restore = () => {
-        const state = restoreState<string>(EDITABLE_SPAN_VALUE, '')
-        setValue(state)
+        setValue(restoreState<string>(EDITABLE_SPAN_VALUE, ''))
     }
 
     return (
