@@ -1,8 +1,9 @@
 import React from 'react'
-import {homeWorkReducer} from '../homeWorkReducer'
 
-let initialState: any[] // need to fix any
+import {homeWorkReducer, SortActionCreators} from '../homeWorkReducer'
+import {IUserState} from "../../HW8";
 
+let initialState: IUserState[]
 beforeEach(() => {
     initialState = [
         {_id: 0, name: 'Кот', age: 3},
@@ -15,18 +16,33 @@ beforeEach(() => {
 })
 
 test('sort name up', () => {
-    const newState = homeWorkReducer(initialState, {type: 'sort', payload: 'up'})
+    const newState = homeWorkReducer(initialState, SortActionCreators.sortUp())
 
-    console.log(newState)
-    // expect(...).toBe(...)
+    const sortedArray = initialState.sort((a, b) => a.name.localeCompare(b.name))
+    const firstElement = sortedArray[0]
+    const secondElement = sortedArray[1]
+    const lastElement = sortedArray[sortedArray.length - 1]
+
+    expect(newState[0]).toBe(firstElement)
+    expect(newState[1]).toBe(secondElement)
+    expect(newState[newState.length - 1]).toBe(lastElement)
 })
+
 test('sort name down', () => {
-    const newState = homeWorkReducer(initialState, {type: 'sort', payload: 'down'})
+    const newState = homeWorkReducer(initialState, SortActionCreators.sortDown())
 
+    const sortedArray = initialState.sort((a, b) => b.name.localeCompare(a.name))
+    const firstElement = sortedArray[0]
+    const secondElement = sortedArray[1]
+    const lastElement = sortedArray[sortedArray.length - 1]
 
+    expect(newState[0]).toBe(firstElement)
+    expect(newState[1]).toBe(secondElement)
+    expect(newState[newState.length - 1]).toBe(lastElement)
 })
 test('check age 18', () => {
-    const newState = homeWorkReducer(initialState, {type: 'check', payload: 18})
+    const age = 18
+    const newState = homeWorkReducer(initialState, SortActionCreators.checkAge(age))
 
-
+    expect(newState.filter(i => i.age < age).length).toBe(0)
 })
