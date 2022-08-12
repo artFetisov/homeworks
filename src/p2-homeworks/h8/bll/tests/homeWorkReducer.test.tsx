@@ -23,9 +23,9 @@ test('sort name up', () => {
     const secondElement = sortedArray[1]
     const lastElement = sortedArray[sortedArray.length - 1]
 
-    expect(newState[0]).toBe(firstElement)
-    expect(newState[1]).toBe(secondElement)
-    expect(newState[newState.length - 1]).toBe(lastElement)
+    expect(newState[0]._id).toBe(firstElement._id)
+    expect(newState[1]._id).toBe(secondElement._id)
+    expect(newState[newState.length - 1].age).toBe(lastElement.age)
 })
 
 test('sort name down', () => {
