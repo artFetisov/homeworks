@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/homeworks/static/css/main.c065b4da.css",
-    "main.js": "/homeworks/static/js/main.bf3c3f04.js",
+    "main.css": "/homeworks/static/css/main.46de3841.css",
+    "main.js": "/homeworks/static/js/main.bd0c77d3.js",
     "static/media/pencil-striped-symbol-for-interface-edit-buttons_icon-icons.com_56782.svg": "/homeworks/static/media/pencil-striped-symbol-for-interface-edit-buttons_icon-icons.com_56782.3b9367d420e8cb07e22db10b6d1b4e62.svg",
     "index.html": "/homeworks/index.html",
-    "main.c065b4da.css.map": "/homeworks/static/css/main.c065b4da.css.map",
-    "main.bf3c3f04.js.map": "/homeworks/static/js/main.bf3c3f04.js.map"
+    "main.46de3841.css.map": "/homeworks/static/css/main.46de3841.css.map",
+    "main.bd0c77d3.js.map": "/homeworks/static/js/main.bd0c77d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.c065b4da.css",
-    "static/js/main.bf3c3f04.js"
+    "static/css/main.46de3841.css",
+    "static/js/main.bd0c77d3.js"
   ]
 }
