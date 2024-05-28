@@ -1,43 +1,68 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
-import s from './SuperRange.module.css'
+import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react'
+import { Box, Slider, styled } from '@mui/material'
+import styles from './SuperRange.module.css'
 
-// тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type SelectedPropsType = Pick<DefaultInputPropsType, 'type' | 'onChange' | 'className'>
 
-// здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
-// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
-type SuperRangePropsType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
-    onChangeRange?: (value: number) => void
-};
+type SuperRangePropsType = SelectedPropsType & {
+  onChangeRange?: (newValue: number) => void
+  value: number
+}
 
-const SuperRange: React.FC<SuperRangePropsType> = (
-    {
-        type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
-        onChange, onChangeRange,
-        className,
+export const PrettoSlider = styled(Slider)({
+  color: ' #01CB22',
+  height: 8,
+  width: 250,
+  '& .MuiSlider-track': {
+    border: 'none',
+  },
+  '& .MuiSlider-thumb': {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      boxShadow: 'inherit',
+    },
+    '&::before': {
+      display: 'none',
+    },
+  },
+  '& .MuiSlider-valueLabel': {
+    lineHeight: 1.2,
+    fontSize: 12,
+    background: 'unset',
+    padding: 0,
+    width: 32,
+    height: 32,
+    borderRadius: '50% 50% 50% 0',
+    backgroundColor: '#52af77',
+    transformOrigin: 'bottom left',
+    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+    '&::before': { display: 'none' },
+    '&.MuiSlider-valueLabelOpen': {
+      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+    },
+    '& > *': {
+      transform: 'rotate(45deg)',
+    },
+  },
+})
 
-        ...restProps// все остальные пропсы попадут в объект restProps
-    }
-) => {
-    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(e) // сохраняем старую функциональность
+const SuperRange: React.FC<SuperRangePropsType> = ({ type, onChange, onChangeRange, value, className, ...restProps }) => {
+  const handleChange = (event: Event, newValue: number | number[]) => {
+    onChangeRange && onChangeRange(newValue as number)
+  }
 
-        onChangeRange && onChangeRange(+e.currentTarget.value)
-    }
-
-    const finalRangeClassName = `${s.range} ${className ? className : ''}`
-
-    return (
-        <>
-            <input
-                type={'range'}
-                onChange={onChangeCallback}
-                className={finalRangeClassName}
-
-                {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
-            />
-        </>
-    )
+  return (
+    <>
+      <div className={styles.wrapper}>
+        <span className={styles.value}>{value}</span>
+        <PrettoSlider getAriaLabel={() => 'Temperature range'} value={value} onChange={handleChange} />
+      </div>
+    </>
+  )
 }
 
 export default SuperRange

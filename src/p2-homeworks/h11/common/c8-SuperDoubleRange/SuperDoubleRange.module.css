@@ -5,6 +5,10 @@
   font-weight: 500;
 }
 
-.value {
+.firstValue {
   margin-right: 20px;
+}
+
+.secondValue {
+  margin-left: 20px;
 }
