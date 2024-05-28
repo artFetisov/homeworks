@@ -1,5 +1,5 @@
 import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react'
-import { Box, Slider, styled } from '@mui/material'
+import { Slider, styled } from '@mui/material'
 import styles from './SuperRange.module.css'
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>

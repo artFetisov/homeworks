@@ -1,6 +1,4 @@
 import React from 'react'
-import Box from '@mui/material/Box'
-import Slider from '@mui/material/Slider'
 import { PrettoSlider } from '../c7-SuperRange/SuperRange'
 import styles from './SuperDoubleRange.module.css'
 

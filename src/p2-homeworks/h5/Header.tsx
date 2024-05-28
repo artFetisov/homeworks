@@ -1,12 +1,7 @@
 import React from 'react'
 
 function Header() {
-    return (
-        <div>
-            // add NavLinks
-
-        </div>
-    )
+  return <div></div>
 }
 
 export default Header
